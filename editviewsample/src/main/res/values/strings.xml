@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EditViewSample</string>
+    <string name="send">send</string>
+    <string name="br">\n</string>
+</resources>
