@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="space_medium">16dp</dimen>
+
+    <dimen name="image_size_medium">60dp</dimen>
+
+    <dimen name="font_medium">18sp</dimen>
+
+    <dimen name="font_small">14sp</dimen>
+</resources>

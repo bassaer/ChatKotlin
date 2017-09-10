@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">QiitaClient</string>
+    <string name="title">Title</string>
+    <string name="username">Username</string>
+</resources>
