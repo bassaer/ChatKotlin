@@ -18,6 +18,10 @@ class MainActivity : AppCompatActivity() {
                 createArticle("Java Book", "Java"))
         val listView: ListView = findViewById(R.id.list_view) as ListView
         listView.adapter = listAdapter
+        listView.setOnItemClickListener { _, _, position, _ ->
+            val article = listAdapter.articles[position]
+            ArticleActivity.intnet(this, article).let { startActivity(it) }
+        }
 
     }
 
