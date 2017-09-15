@@ -10,7 +10,7 @@ import android.widget.Toast
  * Created by nakayama on 2017/09/10.
  */
 fun <T : View> View.bindView(@IdRes id: Int): Lazy<T> = lazy {
-    findViewById(id) as T
+    findViewById<T>(id) as T
 }
 
 fun Context.toast(message: String, duration: Int = Toast.LENGTH_SHORT) {
