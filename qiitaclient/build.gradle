@@ -37,6 +37,13 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    def retrofitVersion = '2.3.0'
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }
 repositories {
     mavenCentral()
