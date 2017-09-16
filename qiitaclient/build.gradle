@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 26
@@ -28,6 +29,7 @@ android {
     }
 }
 
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -51,6 +53,10 @@ dependencies {
     compile "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxLifecycleVersion"
     compile "com.trello.rxlifecycle2:rxlifecycle-components:$rxLifecycleVersion"
 
+    def daggerVersion = '2.4'
+    compile "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    provided "javax.annotation:jsr250-api:1.0"
 }
 repositories {
     mavenCentral()
