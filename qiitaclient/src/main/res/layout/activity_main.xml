@@ -7,13 +7,26 @@
     android:orientation="vertical"
     tools:context="com.github.bassaer.qiitaclient.MainActivity">
 
-    <ListView
-        android:id="@+id/list_view"
-        android:layout_width="368dp"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp"/>
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+
+
 
     <LinearLayout
         android:orientation="horizontal"
