@@ -1,11 +1,10 @@
 package com.github.bassaer.qiitaclient
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.ProgressBar
+import android.view.inputmethod.InputMethodManager
+import android.widget.*
 import com.github.bassaer.qiitaclient.model.ArticleClient
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
@@ -27,6 +26,7 @@ class MainActivity : RxAppCompatActivity() {
         val searchButton = findViewById<Button>(R.id.search_button)
         val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
         val listView = findViewById<ListView>(R.id.list_view)
+        val mainLayout = findViewById<LinearLayout>(R.id.main_layout)
 
         val listAdapter = ArticleListAdapter(applicationContext)
 
@@ -36,10 +36,14 @@ class MainActivity : RxAppCompatActivity() {
             ArticleActivity.intnet(this, article).let { startActivity(it) }
         }
 
-
+        val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 
         searchButton.setOnClickListener {
             progressBar.visibility = View.VISIBLE
+            inputMethodManager.hideSoftInputFromWindow(
+                    mainLayout.windowToken, InputMethodManager.HIDE_NOT_ALWAYS
+            )
+            mainLayout.requestFocus()
             articleClient.search(queryEditText.text.toString())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
