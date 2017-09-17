@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.*
+import butterknife.bindView
 import com.github.bassaer.qiitaclient.model.ArticleClient
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import com.trello.rxlifecycle2.kotlin.bindToLifecycle
@@ -17,23 +18,24 @@ class MainActivity : RxAppCompatActivity() {
     @Inject
     lateinit var articleClient: ArticleClient
 
+    val listView: ListView by bindView(R.id.list_view)
+    val queryEditText: EditText by bindView(R.id.query_edit_text)
+    val progressBar: ProgressBar by bindView(R.id.progress_bar)
+    val searchButton: Button by bindView(R.id.search_button)
+    val mainLayout: LinearLayout by bindView(R.id.main_layout)
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (application as QiitaClientApp).component.inject(this)
         setContentView(R.layout.activity_main)
-
-        val queryEditText = findViewById<EditText>(R.id.query_edit_text)
-        val searchButton = findViewById<Button>(R.id.search_button)
-        val progressBar = findViewById<ProgressBar>(R.id.progress_bar)
-        val listView = findViewById<ListView>(R.id.list_view)
-        val mainLayout = findViewById<LinearLayout>(R.id.main_layout)
 
         val listAdapter = ArticleListAdapter(applicationContext)
 
         listView.adapter = listAdapter
         listView.setOnItemClickListener { _, _, position, _ ->
             val article = listAdapter.articles[position]
-            ArticleActivity.intnet(this, article).let { startActivity(it) }
+            ArticleActivity.intent(this, article).let { startActivity(it) }
         }
 
         val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
