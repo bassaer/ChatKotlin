@@ -16,7 +16,7 @@ class ArticleActivity : AppCompatActivity() {
     companion object {
         private const val ARTICLE_EXTRA: String = "article"
 
-        fun intnet(context: Context, article: Article): Intent =
+        fun intent(context: Context, article: Article): Intent =
                 Intent(context, ArticleActivity::class.java)
                         .putExtra(ARTICLE_EXTRA, article)
     }

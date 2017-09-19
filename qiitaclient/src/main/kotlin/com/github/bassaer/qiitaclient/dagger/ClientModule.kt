@@ -33,6 +33,8 @@ class ClientModule {
 
     @Provides
     @Singleton
-    fun provideArtricleClient(retrofit: Retrofit): ArticleClient =
-            retrofit.create(ArticleClient::class.java)
+    fun provideArticleClient(retrofit: Retrofit): ArticleClient {
+        return retrofit.create(ArticleClient::class.java)
+    }
+
 }
